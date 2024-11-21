@@ -1,0 +1,49 @@
+{{define "title"}}Create an account{{end}}
+{{define "main"}}
+
+<!-- Search Bar  |  Hero Section -->
+<section class="hero">
+  <div class="container">
+    <div class="hero-content">
+      <h2>Welcome to ForumNova Community</h2>
+      <p>Find answers, share ideas, and connect with others!</p>
+      <div class="search-bar">
+        <input type="text" placeholder="Search threads, categories..." />
+        <button>Search</button>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- create account -->
+<form action='/account/create' method='POST'>
+  <div>
+    <label>Username:</label>
+    {{with .Form.FieldErrors.username}}
+    <label class='error'>{{.}}</label>
+    {{end}}
+    <input type='text' name='username' value="{{.Form.Username}}">
+  </div>
+
+  <div>
+    <label>Email:</label>
+    {{with .Form.FieldErrors.email}}
+    <label class='error'>{{.}}</label>
+    {{end}}
+    <input type='text' name='email' value="{{.Form.Email}}">
+  </div>
+
+  <div>
+    <label>Password:</label>
+    {{with .Form.FieldErrors.password}}
+    <label class='error'>{{.}}</label>
+    {{end}}
+    <input type='text' name='password'>
+  </div>
+
+  <div>
+    <input type='submit' value='Signup'>
+  </div>
+</form>
+
+{{end}}

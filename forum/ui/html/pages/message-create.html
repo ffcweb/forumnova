@@ -1,0 +1,33 @@
+{{define "title"}}Post a message{{end}}
+{{define "main"}}
+
+<!-- Search Bar  |  Hero Section -->
+<section class="hero">
+  <div class="container">
+    <div class="hero-content">
+      <h2>Welcome to the Community Forum</h2>
+      <p>Find answers, share ideas, and connect with others!</p>
+      <div class="search-bar">
+        <input type="text" placeholder="Search threads, categories..." />
+        <button>Search</button>
+      </div>
+    </div>
+  </div>
+</section>
+
+
+<form action='/thread/view/{{.ThreadID}}/post/create' method='POST'>
+  <div>
+    <label>Content:</label>
+    {{with .Form.FieldErrors.body}}
+    <label class='error'>{{.}}</label>
+    {{end}}
+    <textarea name='body'>{{.Form.Body}}</textarea>
+  </div>
+
+  <div>
+    <input type='submit' value='Publish thread'>
+  </div>
+</form>
+
+{{end}}

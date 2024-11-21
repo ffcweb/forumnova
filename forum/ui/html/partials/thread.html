@@ -1,0 +1,28 @@
+{{define "thread"}}
+
+<article class="thread-cards">
+    <a href="/thread/view/{{.ID}}" class="thread-card-link">
+        <h3 class="thread-title">{{.Title}}</h3>
+    </a>
+
+    <p class="thread-date">Date: {{.Created}}</p>
+    <p class="thread-author">Author: {{.Author.Username}}</p>
+
+    {{with .Posts}}
+    {{with index . 0}}
+
+    <hr>
+    <h4>Latest Post</h4>
+    <p class="post-author"><strong>Author:</strong> {{.Author.Username}}</p>
+    <p class="post-snippet">
+        {{if gt (len .Body) 100}}
+        {{slice .Body 0 100}}...
+        {{else}}
+            {{.Body}}
+            {{end}}
+    </p>
+
+    {{end}}
+    {{end}}
+</article>
+{{end}}

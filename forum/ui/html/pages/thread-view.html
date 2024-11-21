@@ -1,0 +1,68 @@
+{{define "title"}}{{.Thread.Title}}{{end}}
+{{define "main"}}
+
+
+<!-- Search Bar  |  Hero Section -->
+<section class="hero">
+  <div class="container">
+    <div class="hero-content">
+      <h2>Welcome to the Community Forum</h2>
+      <p>Find answers, share ideas, and connect with others!</p>
+      <div class="search-bar">
+        <input type="text" placeholder="Search threads, categories..." />
+        <button>Search</button>
+      </div>
+    </div>
+  </div>
+</section>
+
+
+<!-- Thread Details -->
+<dl class="thread-details">
+  <div class="container">
+    <div class="thread-detail">
+      <dt class="detail-title">Title : </dt>
+      <dd class="detail-value">{{.Thread.Title}}</dd>
+    </div>
+    <div class="thread-detail">
+      <dt class="detail-title">Date : </dt>
+      <dd class="detail-value">{{.Thread.Created}}</dd>
+    </div>
+    <div class="thread-detail">
+      <dt class="detail-title">Author : </dt>
+      <dd class="detail-value">{{.Thread.Author.Username}}</dd>
+    </div>
+</dl>
+</div>
+
+<div class="post">
+  <div class="container">
+    <a class="post-create-link post-message" href="/thread/view/{{.Thread.ID}}/post/create">Post your voice</a>
+  </div>
+</div>
+
+
+<!-- Thread Posts -->
+<div class="container">
+  <ul class="post-list">
+    {{range .Thread.Posts}}
+    <li class="post-item">
+      <article class="post-article">
+        <dl class="post-details">
+          <div class="post-detail">
+            <dt class="detail-title">Author : </dt>
+            <dd class="detail-value">{{.Author.Username}}</dd>
+          </div>
+          <div class="post-detail">
+            <dt class="detail-title">Date : </dt>
+            <dd class="detail-value">{{.Created}}</dd>
+          </div>
+        </dl>
+        <p class="post-body">{{.Body}}</p>
+      </article>
+    </li>
+    {{end}}
+  </ul>
+</div>
+
+{{end}}
